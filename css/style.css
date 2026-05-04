@@ -1,0 +1,182 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fdfcfb, #f7f3ee);
+  color: #4e3b31;
+  text-align: center;
+}
+
+/* ================= LOCK SCROLL AWAL ================= */
+body.lock-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* ================= COVER ================= */
+.cover {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  background:
+    linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+    url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80') center/cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* ================= BUNGA ================= */
+.flower {
+  position: absolute;
+  width: 120px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.flower.top-left {
+  top: 0;
+  left: 0;
+}
+
+.flower.bottom-right {
+  bottom: 0;
+  right: 0;
+  transform: rotate(180deg);
+}
+
+/* ================= BUTTON ================= */
+button {
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #d4a373, #b08968);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+/* ================= CONTENT ================= */
+.content {
+  display: none;
+}
+
+/* ================= SECTION ================= */
+.section {
+  padding: 60px 20px;
+  margin: 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================= GALERI ================= */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* ================= LIGHTBOX ================= */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.lightbox img {
+  max-width: 90%;
+}
+
+/* ================= SETTINGS ================= */
+.settings-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #b08968;
+  color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  border: none;
+  z-index: 1000;
+}
+
+.settings-panel {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 200px;
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+  display: none;
+  z-index: 1000;
+}
+
+/* ================= DARK MODE ================= */
+.dark {
+  background: #2b2b2b;
+  color: white;
+}
+
+.dark .section {
+  background: #3a3a3a;
+}
+
+/* ================= MOBILE SLIDER ================= */
+@media (max-width: 768px) {
+
+  .content {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    height: 100vh;
+  }
+
+  .section {
+    min-width: 100%;
+    height: 100vh;
+    margin: 0;
+    border-radius: 0;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content::-webkit-scrollbar {
+    display: none;
+  }
+}

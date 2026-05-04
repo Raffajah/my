@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- COVER -->
+<section class="cover" id="cover">
+
+  <!-- TAMBAHAN BUNGA -->
+  <img src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-watercolor-flower-frame-png-image_6310663.png" class="flower top-left">
+  <img src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-watercolor-flower-frame-png-image_6310663.png" class="flower bottom-right">
+
+  <h1>Ahmad & Siti</h1>
+  <p>12 Desember 2026</p>
+  <button onclick="openInvitation()">Buka Undangan</button>
+</section>
+
+<!-- CONTENT -->
+<main class="content" id="content">
+
+<section class="section">
+  <h2>Wedding Day</h2>
+  <p>Kami mengundang Anda</p>
+  <h3>12 Desember 2026</h3>
+</section>
+
+<section class="section">
+  <h3>⏳ Countdown</h3>
+  <div id="countdown"></div>
+</section>
+
+<section class="section">
+  <h3>📸 Galeri</h3>
+  <div class="gallery">
+    <img src="assets/img1.jpg">
+    <img src="assets/img2.jpg">
+    <img src="assets/img3.jpg">
+    <img src="assets/img4.jpg">
+  </div>
+</section>
+
+<section class="section">
+  <h3>📍 Lokasi</h3>
+  <p>Gedung Serbaguna Bahagia</p>
+  <iframe src="https://maps.google.com/maps?q=jakarta&output=embed"></iframe>
+</section>
+
+<section class="section">
+  <h3>🎵 Musik</h3>
+  <button onclick="toggleMusic()">Play / Pause</button>
+</section>
+
+<footer>
+  © 2026 Wedding Invitation
+</footer>
+
+</main>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img">
+</div>
+
+<!-- TAMBAHAN SETTINGS -->
+<button class="settings-btn" onclick="toggleSettings()">⚙️</button>
+
+<div class="settings-panel" id="settings">
+  <p><b>Pengaturan</b></p>
+  <button onclick="toggleDark()">🌙 Dark Mode</button>
+</div>
+
+<audio id="music" loop>
+  <source src="assets/music.mp3">
+</audio>
+
+<script src="js/script.js"></script>
+</body>
+</html>
