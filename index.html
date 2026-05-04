@@ -1,86 +1,299 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Undangan Pernikahan</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Invitation</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
+  background:linear-gradient(135deg,#fdfcfb,#f7f3ee);
+  position:relative;
+}
+
+/* 🌸 BACKGROUND BUNGA GLOBAL */
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  width:300px;
+  height:300px;
+  background-size:contain;
+  background-repeat:no-repeat;
+  opacity:0.25;
+  z-index:0;
+}
+
+body::before{
+  top:0;
+  left:0;
+  background-image:url('https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-watercolor-flower-frame-png-image_6310663.png');
+}
+
+body::after{
+  bottom:0;
+  right:0;
+  transform:rotate(180deg);
+  background-image:url('https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-watercolor-flower-frame-png-image_6310663.png');
+}
+
+/* ================= COVER ================= */
+.cover{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  background:url('https://images.unsplash.com/photo-1505238680356-667803448bb6') center/cover;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  z-index:999;
+}
+
+.overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.4);
+}
+
+/* 🌸 BUNGA DI COVER */
+.cover::before,
+.cover::after{
+  content:"";
+  position:absolute;
+  width:200px;
+  height:200px;
+  background-size:contain;
+  background-repeat:no-repeat;
+  opacity:0.6;
+}
+
+.cover::before{
+  top:20px;
+  left:20px;
+  background-image:url('https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-watercolor-flower-frame-png-image_6310663.png');
+}
+
+.cover::after{
+  bottom:20px;
+  right:20px;
+  transform:rotate(180deg);
+  background-image:url('https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-watercolor-flower-frame-png-image_6310663.png');
+}
+
+.cover-content{
+  position:relative;
+  text-align:center;
+  animation:fadeUp 1.5s ease;
+}
+
+.cover h1{
+  font-family:'Playfair Display',serif;
+  font-size:42px;
+}
+
+button{
+  margin-top:20px;
+  padding:12px 30px;
+  border-radius:50px;
+  background:linear-gradient(135deg,#d4a373,#b08968);
+  border:none;
+  color:white;
+  cursor:pointer;
+}
+
+/* ================= SLIDER ================= */
+.container{
+  display:flex;
+  width:100%;
+  height:100vh;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  position:relative;
+  z-index:1;
+}
+
+.slide{
+  min-width:100%;
+  height:100vh;
+  scroll-snap-align:start;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.card{
+  background:rgba(255,255,255,0.85);
+  padding:30px;
+  border-radius:25px;
+  text-align:center;
+  max-width:420px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* GALERI */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.gallery img{
+  width:100%;
+  border-radius:12px;
+  transition:0.3s;
+}
+
+.gallery img:hover{
+  transform:scale(1.05);
+}
+
+/* ANIMASI */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  body::before,body::after{
+    width:200px;
+    height:200px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <!-- COVER -->
-<section class="cover" id="cover">
-
-  <!-- TAMBAHAN BUNGA -->
-  <img src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-watercolor-flower-frame-png-image_6310663.png" class="flower top-left">
-  <img src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-watercolor-flower-frame-png-image_6310663.png" class="flower bottom-right">
-
-  <h1>Ahmad & Siti</h1>
-  <p>12 Desember 2026</p>
-  <button onclick="openInvitation()">Buka Undangan</button>
-</section>
-
-<!-- CONTENT -->
-<main class="content" id="content">
-
-<section class="section">
-  <h2>Wedding Day</h2>
-  <p>Kami mengundang Anda</p>
-  <h3>12 Desember 2026</h3>
-</section>
-
-<section class="section">
-  <h3>⏳ Countdown</h3>
-  <div id="countdown"></div>
-</section>
-
-<section class="section">
-  <h3>📸 Galeri</h3>
-  <div class="gallery">
-    <img src="assets/img1.jpg">
-    <img src="assets/img2.jpg">
-    <img src="assets/img3.jpg">
-    <img src="assets/img4.jpg">
+<div class="cover" id="cover">
+  <div class="overlay"></div>
+  <div class="cover-content">
+    <p>The Wedding Of</p>
+    <h1>Ahmad & Siti</h1>
+    <p>12 Desember 2026</p>
+    <button onclick="openInvite()">Buka Undangan</button>
   </div>
-</section>
-
-<section class="section">
-  <h3>📍 Lokasi</h3>
-  <p>Gedung Serbaguna Bahagia</p>
-  <iframe src="https://maps.google.com/maps?q=jakarta&output=embed"></iframe>
-</section>
-
-<section class="section">
-  <h3>🎵 Musik</h3>
-  <button onclick="toggleMusic()">Play / Pause</button>
-</section>
-
-<footer>
-  © 2026 Wedding Invitation
-</footer>
-
-</main>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <img id="lightbox-img">
 </div>
 
-<!-- TAMBAHAN SETTINGS -->
-<button class="settings-btn" onclick="toggleSettings()">⚙️</button>
+<!-- SLIDER -->
+<div class="container">
 
-<div class="settings-panel" id="settings">
-  <p><b>Pengaturan</b></p>
-  <button onclick="toggleDark()">🌙 Dark Mode</button>
+<!-- PEMBUKA -->
+<div class="slide">
+  <div class="card">
+    <p>بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</p>
+    <p style="margin-top:10px;">Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
+    <p style="margin-top:10px;">
+      Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan acara pernikahan:
+    </p>
+  </div>
+</div>
+
+<!-- MEMPELAI -->
+<div class="slide">
+  <div class="card">
+    <h2>Ahmad</h2>
+    <p>Putra dari Bapak ... & Ibu ...</p>
+    <p style="margin:15px 0;">&</p>
+    <h2>Siti</h2>
+    <p>Putri dari Bapak ... & Ibu ...</p>
+  </div>
+</div>
+
+<!-- DETAIL -->
+<div class="slide">
+  <div class="card">
+    <h2>Detail Acara</h2>
+    <p style="margin-top:10px;">
+      🗓 Minggu, 12 Desember 2026 <br>
+      ⏰ 10.00 WIB <br>
+      📍 Gedung Serbaguna Bahagia
+    </p>
+  </div>
+</div>
+
+<!-- UNDANGAN -->
+<div class="slide">
+  <div class="card">
+    <p>
+      Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.
+    </p>
+  </div>
+</div>
+
+<!-- COUNTDOWN -->
+<div class="slide">
+  <div class="card">
+    <h2>Countdown</h2>
+    <div id="countdown"></div>
+  </div>
+</div>
+
+<!-- GALERI -->
+<div class="slide">
+  <div class="card gallery">
+    <img src="https://picsum.photos/200/200?1">
+    <img src="https://picsum.photos/200/200?2">
+    <img src="https://picsum.photos/200/200?3">
+    <img src="https://picsum.photos/200/200?4">
+  </div>
+</div>
+
+<!-- LOKASI -->
+<div class="slide">
+  <div class="card">
+    <h2>Lokasi</h2>
+    <iframe src="https://maps.google.com/maps?q=jakarta&output=embed" width="100%" height="200"></iframe>
+  </div>
+</div>
+
+<!-- PENUTUP -->
+<div class="slide">
+  <div class="card">
+    <p>Wassalamu’alaikum Warahmatullahi Wabarakatuh</p>
+    <h3 style="margin-top:10px;">Kami yang berbahagia</h3>
+    <h2>Ahmad & Siti</h2>
+  </div>
+</div>
+
 </div>
 
 <audio id="music" loop>
-  <source src="assets/music.mp3">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
 </audio>
 
-<script src="js/script.js"></script>
+<script>
+function openInvite(){
+  document.getElementById('cover').style.display='none';
+  document.body.style.overflow='auto';
+  document.getElementById('music').play();
+}
+
+const eventDate=new Date("Dec 12, 2026 10:00:00").getTime();
+setInterval(()=>{
+  const now=new Date().getTime();
+  const d=eventDate-now;
+
+  const days=Math.floor(d/(1000*60*60*24));
+  const hours=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+  const minutes=Math.floor((d%(1000*60*60))/(1000*60));
+  const seconds=Math.floor((d%(1000*60))/1000);
+
+  document.getElementById("countdown").innerHTML=
+    `${days} hari ${hours} jam ${minutes} menit ${seconds} detik`;
+},1000);
+</script>
+
 </body>
 </html>
